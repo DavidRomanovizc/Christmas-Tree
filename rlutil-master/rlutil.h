@@ -348,7 +348,7 @@ namespace rlutil {
 ///
 /// Note:
 /// Only Arrows, Esc, Enter and Space are currently working properly.
-    RLUTIL_INLINE int getkey(void) {
+    RLUTIL_INLINE int getkey() {
 #ifndef _WIN32
         int cnt = kbhit(); // for ANSI escapes processing
 #endif
@@ -434,7 +434,7 @@ namespace rlutil {
 
 /// Function: nb_getch
 /// Non-blocking getch(). Returns 0 if no key was pressed.
-    RLUTIL_INLINE int nb_getch(void) {
+    RLUTIL_INLINE int nb_getch() {
         if (kbhit()) return getch();
         else return 0;
     }
@@ -553,7 +553,7 @@ namespace rlutil {
 ///
 /// See <Color Codes>
 /// See <resetColor>
-    RLUTIL_INLINE int saveDefaultColor(void) {
+    RLUTIL_INLINE int saveDefaultColor() {
 #if defined(_WIN32) && !defined(RLUTIL_USE_ANSI)
         static char initialized = 0; // bool
         static WORD attributes;
@@ -577,7 +577,7 @@ namespace rlutil {
 /// See <Color Codes>
 /// See <setColor>
 /// See <saveDefaultColor>
-    RLUTIL_INLINE void resetColor(void) {
+    RLUTIL_INLINE void resetColor() {
 #if defined(_WIN32) && !defined(RLUTIL_USE_ANSI)
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD) saveDefaultColor());
 #else
@@ -587,7 +587,7 @@ namespace rlutil {
 
 /// Function: cls
 /// Clears screen, resets all attributes and moves cursor home.
-    RLUTIL_INLINE void cls(void) {
+    RLUTIL_INLINE void cls() {
 #if defined(_WIN32) && !defined(RLUTIL_USE_ANSI)
         // Based on https://msdn.microsoft.com/en-us/library/windows/desktop/ms682022%28v=vs.85%29.aspx
         const HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -682,13 +682,13 @@ namespace rlutil {
 
 /// Function: hidecursor
 /// Hides the cursor.
-    RLUTIL_INLINE void hidecursor(void) {
+    RLUTIL_INLINE void hidecursor() {
         setCursorVisibility(0);
     }
 
 /// Function: showcursor
 /// Shows the cursor.
-    RLUTIL_INLINE void showcursor(void) {
+    RLUTIL_INLINE void showcursor() {
         setCursorVisibility(1);
     }
 
@@ -706,7 +706,7 @@ namespace rlutil {
 
 /// Function: trows
 /// Get the number of rows in the terminal window or -1 on error.
-    RLUTIL_INLINE int trows(void) {
+    RLUTIL_INLINE int trows() {
 #ifdef _WIN32
         CONSOLE_SCREEN_BUFFER_INFO csbi;
         if (!GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi))
@@ -779,7 +779,7 @@ namespace rlutil {
         getch();
     }
 
-    RLUTIL_INLINE void setConsoleTitle(RLUTIL_STRING_T title) {
+    RLUTIL_INLINE void setConsoleTitle(const RLUTIL_STRING_T& title) {
         const char *true_title =
 #ifdef __cplusplus
                 title.c_str();
