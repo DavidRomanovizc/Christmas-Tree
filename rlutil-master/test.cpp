@@ -1,3 +1,7 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
+#pragma ide diagnostic ignored "cert-flp30-c"
+#pragma ide diagnostic ignored "cert-msc51-cpp"
 /**
  * File: test.cpp
  *
@@ -201,7 +205,7 @@ int main() {
         std::string buf(maxlen, '\0');
         for (unsigned int l = 1; l < maxlen; ++l) {
             std::generate(buf.begin(), buf.begin() + l, chargen);
-            rlutil::setString(buf.c_str());
+            rlutil::setString(buf);
             std::cout.flush();
             rlutil::msleep(75);
         }
@@ -222,3 +226,5 @@ int main() {
     std::cout << "All tests done. Bye!" << std::endl;
     return 0;
 }
+
+#pragma clang diagnostic pop
