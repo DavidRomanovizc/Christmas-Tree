@@ -5,3 +5,4 @@
 
 
 ## Download
+1. clone this repository ```https://github.com/DavidRomanovizc/Christmas-Tree.git```
