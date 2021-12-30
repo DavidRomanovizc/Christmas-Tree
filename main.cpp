@@ -45,9 +45,10 @@ int main() {
                 std::cout << " ";
             }
             setColor(rlutil::BROWN);
-            std::cout << "#####" << std::endl;
+            std::cout << "######" << std::endl;
         }
-        Sleep(300);
+
+        Sleep(450);
         system("CLS");
     }
 }
