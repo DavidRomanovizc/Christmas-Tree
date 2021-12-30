@@ -6,3 +6,9 @@
 
 ## Download
 1. clone this repository ```https://github.com/DavidRomanovizc/Christmas-Tree.git```
+2. Build CMake file
+3. run ```main.cpp```
+
+
+## Utility 
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=tapio&repo=rlutil&theme=tokyonight)](https://github.com/tapio/rlutil)
